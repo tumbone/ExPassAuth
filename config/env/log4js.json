@@ -1,0 +1,23 @@
+{
+  "appenders": {
+    "datefile": {
+      "type": "dateFile",
+      "filename": "./system.log",
+      "pattern": "-yyyy-MM-dd",
+      "alwaysIncludePattern": false,
+      "layout": {
+        "type": "pattern",
+        "pattern": "%d{ISO8601} - %-5p - %-50c - %m%n"
+      }
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": [
+        "datefile"
+      ],
+      "level": "trace"
+    }
+  },
+  "replaceConsole": true
+}

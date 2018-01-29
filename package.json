@@ -1,0 +1,33 @@
+{
+  "name": "authentication-service",
+  "version": "2.1.0",
+  "description": "A nodejs authentication service created with expressjs + passportjs",
+  "main": "server.js",
+  "scripts": {
+    "semistandard": "semistandard --verbose --env mocha | snazzy"
+  },
+  "author": "tumbonea",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-healthcheck": "^0.1.0",
+    "jsonwebtoken": "^8.1.1",
+    "jwt-simple": "^0.5.1",
+    "log4js": "^2.4.1",
+    "log4js-node-mongodb": "^2.2.1",
+    "mongodb": "^3.0.0-rc0",
+    "mongoose": "^4.13.7",
+    "nconf": "^0.10.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1"
+  },
+  "devDependencies": {
+    "semistandard": "^11.0.0",
+    "snazzy": "^7.0.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "enableSsl": false,
+  "users": {
+    "collection": "users"
+  },
+  "jwtOptions": {
+    "secretOrKey": "mytokensecret"
+  },
+  "seedData": {
+    "users": [
+      {
+        "username": "testuser",
+        "password": "testpass"
+      }
+    ]
+  }
+}
