@@ -16,6 +16,10 @@ class AuthOrchestration {
       if (bcrypt.compareSync(password, result.password)) {
         var payload = { id: result._id };
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
+
+        result = result.toObject();
+        if (result.password) delete result.password;
+
         return { user: result, token: token };
       } else {
         throw new Error('Incorrect password.');
