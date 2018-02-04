@@ -26,6 +26,9 @@ class AuthOrchestration {
       }
     });
   }
+  signUpUser (user) {
+    return userService.createUser(user);
+  }
   verifyToken (token) {
     return jwt.verify(token, jwtOptions.secretOrKey);
   }
