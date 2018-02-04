@@ -62,18 +62,18 @@ or
 **HTTP Method:** POST  
 **Headers:** "Authorization: <token-extracted-from-login-response>"
 
-* /users/:id
+* /users/:id  
 **HTTP Method:** GET  
 **Headers:** "Authorization: <token-extracted-from-login-response>"
 
-* /users/:id
+* /users/:id  
 **HTTP Method:** PUT  
 **Headers:** "Authorization: <token-extracted-from-login-response>"
 
-* /users/:id
+* /users/:id  
 **HTTP Method:** DELETE  
 **Headers:** "Authorization: <token-extracted-from-login-response>"
 
-* /users/resetpassword/:id
+* /users/resetpassword/:id  
 **HTTP Method:** PUT  
 **Headers:** "Authorization: <token-extracted-from-login-response>"

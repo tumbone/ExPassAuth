@@ -5,12 +5,12 @@ var express = require('express');
 var router = express.Router();
 var authOrchestrator = require('../orchestrations/auth.orchestration');
 
-function success(res, result) {
+function success (res, result) {
   logger.debug(result);
   res.json(result);
 }
 
-function error(res, err) {
+function error (res, err) {
   logger.error(err);
   res.status(httpStatusCodes.InternalServerError).send(err.message);
 }

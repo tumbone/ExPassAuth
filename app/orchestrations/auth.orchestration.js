@@ -12,10 +12,10 @@ var sanitizeResult = (userObj) => {
     delete userObj.password;
   }
   return userObj;
-}
+};
 
 class AuthOrchestration {
-  loginUser(user) {
+  loginUser (user) {
     let username = user.username || undefined;
     let password = user.password || undefined;
     return userService.getUserByUsername(username).then((result) => {
@@ -32,7 +32,7 @@ class AuthOrchestration {
       }
     });
   }
-  signUpUser(user) {
+  signUpUser (user) {
     return userService.createUser(user).then(result => {
       if (!result) {
         throw new Error('An error occured creating new user.');
@@ -40,7 +40,7 @@ class AuthOrchestration {
       return sanitizeResult(result);
     });
   }
-  verifyToken(token) {
+  verifyToken (token) {
     return jwt.verify(token, jwtOptions.secretOrKey);
   }
 }

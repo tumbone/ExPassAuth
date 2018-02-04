@@ -8,31 +8,31 @@ var sanitizeResult = (userObj) => {
     delete userObj.password;
   }
   return userObj;
-}
+};
 
 class UserOrchestration {
-  getAllUsers() {
+  getAllUsers () {
     return userService.getAllUsers().then(result => {
       if (result) {
-        return result.map(user => { return sanitizeResult(user) });
+        return result.map(user => { return sanitizeResult(user); });
       }
     });
   }
-  getUserById(userId) {
+  getUserById (userId) {
     return userService.getUserById(userId);
   }
-  createNewUser(user) {
+  createNewUser (user) {
     return userService.createUser(user);
   }
-  updateUser(userId, user) {
+  updateUser (userId, user) {
     if (user.password) delete user.password;
     return userService.updateUser(userId, user);
   }
-  resetUserPassword(userId, password) {
+  resetUserPassword (userId, password) {
     let encyptedPassword = bcrypt.hashSync(password, 10);
     return userService.resetUserPassword(userId, encyptedPassword);
   }
-  deleteUser(userId) {
+  deleteUser (userId) {
     return userService.deleteUser(userId);
   }
 }
