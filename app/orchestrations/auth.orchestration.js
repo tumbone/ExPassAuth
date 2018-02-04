@@ -5,8 +5,17 @@ var config = require('../../config/config');
 var jwtOptions = {};
 jwtOptions.secretOrKey = config.get('jwtOptions:secretOrKey');
 
+var sanitizeResult = (userObj) => {
+  // ToDo: Move this method to User Model
+  if (userObj.password) {
+    userObj = userObj.toObject();
+    delete userObj.password;
+  }
+  return userObj;
+}
+
 class AuthOrchestration {
-  loginUser (user) {
+  loginUser(user) {
     let username = user.username || undefined;
     let password = user.password || undefined;
     return userService.getUserByUsername(username).then((result) => {
@@ -17,19 +26,21 @@ class AuthOrchestration {
         var payload = { id: result._id };
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
 
-        result = result.toObject();
-        if (result.password) delete result.password;
-
-        return { user: result, token: token };
+        return { user: sanitizeResult(result), token: token };
       } else {
         throw new Error('Incorrect password.');
       }
     });
   }
-  signUpUser (user) {
-    return userService.createUser(user);
+  signUpUser(user) {
+    return userService.createUser(user).then(result => {
+      if (!result) {
+        throw new Error('An error occured creating new user.');
+      }
+      return sanitizeResult(result);
+    });
   }
-  verifyToken (token) {
+  verifyToken(token) {
     return jwt.verify(token, jwtOptions.secretOrKey);
   }
 }
