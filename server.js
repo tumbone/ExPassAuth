@@ -9,6 +9,7 @@ var compression = require('compression');
 var config = require('./config/config');
 var passport = config.passport();
 passport();
+
 var db = config.mongoose();
 db.openConnection();
 
