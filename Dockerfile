@@ -13,6 +13,9 @@
 # docker run -d --net=isolated_network --name mongodb mongo
 # docker run -d -p 3000:3000 --net=isolated_network --name expassauth tumbone/expassauth
 
+# Option 3
+# Use docker-compose
+
 
 FROM node:latest
 MAINTAINER tumbonea
