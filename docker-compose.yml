@@ -1,0 +1,49 @@
+# docker build -t expassauth -f node.dockerfile .
+# docker login
+# docker tag expassauth tumbone/expassauth:2.1.0
+# docker push tumbone/expassauth:2.1.0
+# docker run -p 3000:80 tumbone/expassauth:2.1.0
+
+# docker machine env myvm1
+# & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env myvm1 | Invoke-Expression
+# docker swarm init
+# docker stack deploy -c docker-compose.yml node-express-auth-app 
+
+
+
+version: "3"
+services:
+  expassauth:
+    # replace username/repo:tag with your name and image details
+    image: tumbone/expassauth:2.1.0
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3000:80"
+    networks:
+      - webnet
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports: 
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+  mongodb:
+    image: mongo
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+networks:
+  webnet:
