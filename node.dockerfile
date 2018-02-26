@@ -1,4 +1,4 @@
-# Build: docker build -f Dockerfile -t tumbone/expassauth .
+# Build: docker build -f node.dockerfile -t tumbone/expassauth .
 
 # Option 1
 # Start MongoDB and Node (link to MongoDB with Legacy Linking)
@@ -21,8 +21,8 @@ FROM node:latest
 MAINTAINER tumbonea
 ENV NODE_ENV=dev
 ENV PORT=3000
-COPY . /var/www
 WORKDIR /var/www
+ADD . /var/www
 RUN npm install
 EXPOSE $PORT
 ENTRYPOINT ["npm", "start"]
