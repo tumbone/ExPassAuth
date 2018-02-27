@@ -13,8 +13,20 @@
 
 version: "3"
 services:
+  angpassauth:
+    image: tumbone/angpassauth:0.0.0
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4200:80"
+    networks:
+      - webnet
   expassauth:
-    # replace username/repo:tag with your name and image details
     image: tumbone/expassauth:2.1.0
     deploy:
       resources:
