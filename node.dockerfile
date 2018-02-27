@@ -1,4 +1,4 @@
-# Build: docker build -f node.dockerfile -t tumbone/expassauth .
+# Build: docker build -f node.dockerfile -t expassauth .
 
 # Option 1
 # Start MongoDB and Node (link to MongoDB with Legacy Linking)
