@@ -14,7 +14,7 @@
 version: "3"
 services:
   angpassauth:
-    image: tumbone/angpassauth:0.0.0
+    image: tumbone/angpassauth:latest
     deploy:
       resources:
         limits:
@@ -23,11 +23,11 @@ services:
       restart_policy:
         condition: on-failure
     ports:
-      - "4200:80"
+      - "3001:3001"
     networks:
       - webnet
   expassauth:
-    image: tumbone/expassauth:2.1.0
+    image: tumbone/expassauth:latest
     deploy:
       resources:
         limits:

@@ -1,0 +1,3 @@
+{
+  "databaseConnectionString": "mongodb://mongodb/AuthSvcDb"
+}

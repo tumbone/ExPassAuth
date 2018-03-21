@@ -17,9 +17,9 @@
 # Use docker-compose
 
 
-FROM node:latest
+FROM node:8.9-alpine
 MAINTAINER tumbonea
-ENV NODE_ENV=dev
+ENV NODE_ENV=test
 ENV PORT=3000
 WORKDIR /var/www
 ADD . /var/www
