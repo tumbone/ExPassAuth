@@ -2,7 +2,7 @@ const config = require('../config');
 var log4js = require('log4js');
 let environment = config.environment;
 let log4jsConfig = 'log4js.json';
-if (environment === 'dev') {
+if (environment === ('dev') || environment === ('test')) {
   log4jsConfig = 'log4js.dev.json';
 }
 
