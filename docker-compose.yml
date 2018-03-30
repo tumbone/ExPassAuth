@@ -9,8 +9,6 @@
 # docker swarm init
 # docker stack deploy -c docker-compose.yml node-express-auth-app 
 
-
-
 version: "3"
 services:
   angpassauth:
@@ -49,13 +47,6 @@ services:
       placement:
         constraints: [node.role == manager]
     networks:
-      - webnet
-  mongodb:
-    image: mongo
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - webnet
+      - webnet  
 networks:
   webnet:

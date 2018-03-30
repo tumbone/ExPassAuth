@@ -17,7 +17,7 @@ require('./config/seeddb/users.seedservice')();
 
 var logger = config.logger().getLogger('server');
 // Configuration - Start-up parameter "NODE_ENV"
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 var enableSsl = config.get('enableSsl');
 

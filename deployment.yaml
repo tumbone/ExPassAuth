@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2 # for version before 1.9.0 use apps/v1beta otherwise use apps/v1
+kind: Deployment
+metadata:
+  name: expassauth-delployment
+spec: 
+  selector:
+    matchLabels:
+      app: expassauth
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: expassauth
+    spec:
+      containers:
+      - name: expassauth
+        image: tumbone/expassauth:latest
+        ports:
+        - containerPort: 80
